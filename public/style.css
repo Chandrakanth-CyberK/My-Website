@@ -77,13 +77,31 @@ body{
 .terminal{
   background:linear-gradient(180deg,#030a06, #03130c);
   border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow);
-  display:flex; flex-direction:column; overflow:hidden
+  display:flex; flex-direction:column; overflow:hidden;
+  align-items:center; /* center content */
+  justify-content:center;
+  padding:20px;
 }
-.term-bar{display:flex; gap:6px; padding:10px; border-bottom:1px solid var(--line); background:#05120c}
+.term-bar{display:flex; gap:6px; padding:10px; border-bottom:1px solid var(--line); background:#05120c; width:100%}
 .term-bar .dot{width:10px;height:10px;border-radius:50%}
 .red{background:#ff5f56} .yellow{background:#ffbd2e} .green{background:#27c93f}
 .terminal pre{
   margin:0; padding:18px; color:#9bffc6; min-height:240px; white-space:pre-wrap;
+}
+
+/* ✅ Profile Image inside Terminal */
+.profile-pic img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;       /* circular */
+  object-fit: cover;
+  border: 3px solid var(--accent);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-pic img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(0, 255, 136, 0.8);
 }
 
 /* Cards & grids */
