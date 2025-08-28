@@ -1,0 +1,186 @@
+:root{
+  --bg:#020503;
+  --panel:#07110b;
+  --ink:#d5ffe0;
+  --muted:#87f5b0;
+  --accent:#00ff88;
+  --accent-2:#15ffcc;
+  --line:rgba(0,255,136,.18);
+  --shadow:0 10px 30px rgba(0,255,136,.15);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:"Share Tech Mono",monospace;
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 10% -20%, rgba(0,255,136,.07), transparent 60%),
+    radial-gradient(1000px 600px at 110% 20%, rgba(21,255,204,.05), transparent 60%),
+    var(--bg);
+  background-attachment: fixed;
+}
+
+/* Navbar */
+.nav{
+  position:sticky; top:0; z-index:50;
+  backdrop-filter:saturate(120%) blur(8px);
+  background:rgba(2,5,3,.7);
+  border-bottom:1px solid var(--line);
+}
+.nav .brand{color:var(--accent); text-decoration:none; font-weight:700; padding:14px 16px; display:inline-block}
+.nav .nav-links{display:flex; gap:8px; align-items:center; padding:8px}
+.nav .nav-links a{
+  color:var(--ink); text-decoration:none; padding:10px 12px; border-radius:8px;
+  border:1px solid transparent;
+}
+.nav .nav-links a.active,
+.nav .nav-links a:hover{border-color:var(--line); background:rgba(0,255,136,.06)}
+
+.hamburger{display:none; background:none; border:0; padding:12px; margin-left:auto}
+.hamburger span{display:block; width:24px; height:2px; background:var(--ink); margin:5px 0; transition:.3s}
+
+/* Progress bar */
+.progress{
+  position:absolute; left:0; bottom:-1px; height:2px; width:0;
+  background:linear-gradient(90deg,var(--accent),var(--accent-2));
+  transition:width .1s linear;
+}
+
+/* Layout */
+.container{max-width:1100px; margin:0 auto; padding:96px 20px 64px}
+.section{margin:64px 0}
+
+/* Hero */
+.hero{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:stretch}
+.hero h1{font-size:40px; margin:.2rem 0}
+.hero h2{margin:.2rem 0; color:var(--muted)}
+.subtitle{opacity:.9}
+.cta{display:flex; gap:12px; margin:18px 0 28px}
+.btn{display:inline-block; padding:10px 16px; border-radius:10px; text-decoration:none; border:1px solid var(--line)}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2)); color:#03140c; font-weight:700}
+.btn.ghost{color:var(--ink)}
+.btn:hover{box-shadow:var(--shadow)}
+
+.stats{display:flex; gap:18px; flex-wrap:wrap}
+.stat{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:12px; padding:14px 16px; min-width:140px; box-shadow:var(--shadow);
+  display:grid; justify-items:center
+}
+.stat span{font-size:28px; color:var(--accent)}
+
+/* Terminal */
+.terminal{
+  background:linear-gradient(180deg,#030a06, #03130c);
+  border:1px solid var(--line); border-radius:12px; box-shadow:var(--shadow);
+  display:flex; flex-direction:column; overflow:hidden
+}
+.term-bar{display:flex; gap:6px; padding:10px; border-bottom:1px solid var(--line); background:#05120c}
+.term-bar .dot{width:10px;height:10px;border-radius:50%}
+.red{background:#ff5f56} .yellow{background:#ffbd2e} .green{background:#27c93f}
+.terminal pre{
+  margin:0; padding:18px; color:#9bffc6; min-height:240px; white-space:pre-wrap;
+}
+
+/* Cards & grids */
+.card{
+  background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:20px; box-shadow:var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.grid{display:grid; gap:18px; grid-template-columns:repeat(12,1fr)}
+.grid>.card{grid-column: span 12}
+@media(min-width:780px){
+  #skills.grid>.card{grid-column: span 4}
+  #projects.grid>.project{grid-column: span 6}
+  #education.grid>.card{grid-column: span 6}
+  #certifications.grid>.card{grid-column: span 12}
+}
+
+/* Timeline */
+.timeline{list-style:none; margin:0; padding:0; border-left:2px dashed var(--line)}
+.timeline .card{position:relative; margin:18px 0 18px 18px}
+.timeline .card::before{
+  content:""; position:absolute; left:-27px; top:20px; width:12px; height:12px; border-radius:50%;
+  background:var(--accent); box-shadow:0 0 0 4px rgba(0,255,136,.15)
+}
+.time{color:var(--muted); font-size:13px; margin-bottom:4px}
+.role{margin-bottom:8px}
+
+/* Chips / Tags */
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chips span,.tags span{
+  border:1px solid var(--line); padding:6px 10px; border-radius:999px; background:rgba(0,255,136,.04);
+  transition: all 0.3s ease;
+}
+.chips span:hover,.tags span:hover{
+  background:var(--accent);
+  color:#000;
+  border-color:var(--accent);
+}
+
+/* ✅ Certification links styled like chips */
+.chips a {
+  border:1px solid var(--line);
+  padding:6px 10px;
+  border-radius:999px;
+  background:rgba(0,255,136,.04);
+  color:var(--ink);
+  text-decoration:none;
+  transition: all 0.3s ease;
+}
+.chips a:hover {
+  background:var(--accent);
+  color:#000;
+  border-color:var(--accent);
+}
+
+/* Projects */
+.card.project {
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+}
+.card.project:hover {
+  transform: translateY(-6px) scale(1.03);
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(0, 255, 100, 0.6), 0 0 40px rgba(0, 255, 100, 0.3);
+  background: rgba(0, 15, 0, 0.9);
+}
+.project h4{margin:.2rem 0 .4rem; color:var(--accent);}
+
+/* Education */
+.edu-time{font-size:13px; color:var(--muted); margin-bottom:6px}
+
+/* Contact */
+.contact-grid{display:grid; gap:18px}
+@media(min-width:800px){.contact-grid{grid-template-columns:1fr 1fr}}
+#contactForm input,#contactForm textarea{
+  width:100%; padding:12px 14px; margin:8px 0; border-radius:10px;
+  border:1px solid var(--line); background:rgba(0,0,0,.35); color:var(--ink)
+}
+#contactForm button{cursor:pointer}
+.status{min-height:20px; font-size:13px; color:var(--muted); margin-top:6px}
+
+/* Reveal animation */
+.reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease}
+.reveal.show{opacity:1; transform:translateY(0)}
+
+/* Footer */
+.footer{padding:32px 20px; text-align:center; color:var(--muted); border-top:1px solid var(--line)}
+
+/* Active section highlighting */
+.nav .nav-links a.active{color:var(--accent)}
+
+/* Mobile */
+@media(max-width:960px){
+  .hero{grid-template-columns:1fr}
+  .hamburger{display:inline-block}
+  .nav .nav-links{position:absolute; top:100%; left:0; right:0; display:grid; gap:0; background:rgba(2,5,3,.96); border-bottom:1px solid var(--line); transform:scaleY(0); transform-origin:top; transition:.25s}
+  .nav .nav-links.open{transform:scaleY(1)}
+}
